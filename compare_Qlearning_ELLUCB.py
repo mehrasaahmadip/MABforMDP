@@ -49,7 +49,7 @@ class FrozenLakeEnv:
 ###################################
 ###################################
 # ────────────────────────────────────────────────────────────────
-#   Bisection KL , S.Fillipi 2010
+#   Bisection KL , based on S.Fillipi 2010
 #
 def _maxKL(p, V, eps, it=60):
     p, V = np.asarray(p, float), np.asarray(V, float)
