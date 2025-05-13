@@ -157,8 +157,9 @@ def bandit_grid_control(env, gamma=0.95, delta=0.05, max_passes=10, max_pulls_st
             counts[(s, a)] += 1
             trans[(s, a)][s2] += 1
 
-    # main loop
+    # ##### Main Loop ##########
     for _ in range(max_passes):
+        # we do not reset V and P
         # policy improvement via KL-LUCB
         for s in range(S):
             if s == env.goal or s in env.holes:
@@ -173,7 +174,7 @@ def bandit_grid_control(env, gamma=0.95, delta=0.05, max_passes=10, max_pulls_st
             else:
                 P_hat[s, a, s] = 1.0
         # policy evaluation via value iteration
-        for _ in range(200):
+        for _ in range(200): # V(goal) = 1 which is the state with reward
             V_new = V.copy()
             for s in range(S):
                 if s == env.goal or s in env.holes:
